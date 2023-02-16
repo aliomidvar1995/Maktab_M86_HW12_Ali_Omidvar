@@ -1,0 +1,29 @@
+1 - SELECT employee_name FROM employee WHERE salary < 1000;
+
+2 - SELECT employee_name, unit_name FROM unit JOIN employee ON unit.id = employee.unit_id;
+
+3 - SELECT AVG(salary) FROM employee JOIN unit ON unit.id = employee.unit_id GROUP BY unit_name;
+
+4 - SELECT unit_name FROM branch JOIN unit ON branch.id = unit.branch_id WHERE city = 'esfahan';
+
+5 - SELECT branch_name, COUNT(branch_id) FROM branch JOIN unit ON branch.id = unit.branch_id GROUP BY branch_id;
+
+6 - SELECT branch_name, employee_name FROM branch 
+JOIN unit ON branch.id = unit.branch_id 
+JOIN employee ON unit.id = employee.unit_id;
+
+7 - SELECT AVG(salary) FROM branch 
+JOIN unit ON branch.id = unit.branch_id 
+JOIN employee ON unit.id = employee.unit_id WHERE city = 'esfahan';
+
+8 - SELECT branch_name, COUNT(branch_name) FROM branch 
+JOIN unit ON branch.id = unit.branch_id 
+JOIN employee ON unit.id = employee.unit_id GROUP BY branch_name;
+
+9 - SELECT unit_name, COUNT(employee_name) FROM branch 
+JOIN unit ON branch.id = unit.branch_id 
+LEFT JOIN employee ON unit.id = employee.unit_id WHERE city = 'esfahan' GROUP BY unit_name;
+
+10 - SELECT branch_name, COUNT(branch_name) FROM branch 
+JOIN unit ON branch.id = unit.branch_id 
+LEFT JOIN employee ON unit.id = employee.unit_id GROUP BY branch_name HAVING COUNT(branch_name) < 10;
