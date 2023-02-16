@@ -1,0 +1,30 @@
+CREATE DATABASE shop;
+
+USE shop;
+
+CREATE TABLE branch (
+    id INT NOT NULL AUTO_INCREMENT,
+    branch_name VARCHAR(255) NOT NULL,
+    date_of_establishment DATE NOT NULL,
+    city VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE unit (
+    id INT NOT NULL AUTO_INCREMENT,
+    unit_name VARCHAR(255) NOT NULL,
+    duties LONGTEXT NOT NULL,
+    branch_id INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (branch_id) REFERENCES branch(id)
+);
+
+CREATE TABLE employee (
+    id INT NOT NULL AUTO_INCREMENT,
+    employee_name VARCHAR(255) NOT NULL,
+    age INT NOT NULL,
+    salary INT NOT NULL,
+    unit_id INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (unit_id) REFERENCES unit(id)
+);
